@@ -1,20 +1,19 @@
 #!/bin/bash -l 
 
 for file in `ls $problem/*.py`; do
-    if [[ ${file} != *"test"* ]]; then
-        pytype ./$file
-        mypy ./$file
-    else
+    pytype ./$file
+    mypy --disallow-untyped-calls --disallow-untyped-defs --disallow-incomplete-defs ./$file
+    pylint ./$file
+    if [[ ${file} == *"test"* ]]; then
         echo "Run test file for $file"
-        python ./$file
+        pytest ./$file
     fi
 done
 
 i=0
 for file in `ls $problem/*.py`; do
     if [[ ${file} != *"test"* ]]; then
-        i=$((i+1))
-        echo "Run $problem$i.py file"
+        echo "Run $file.py file"
         python ./$file
     fi
 done
