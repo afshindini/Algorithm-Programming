@@ -14,14 +14,14 @@ def karatsuba_recursive(number1: int,number2: int) -> int:
         left_multi = karatsuba_recursive(num1_left,num2_left)
         right_multi = karatsuba_recursive(num1_right,num2_right)
 
-        out = (10**power) * left_multi + (10**(power/2)) \
+        out = (10**int(power)) * left_multi + (10**int(power/2)) \
             * ((num1_left + num1_right) * (num2_left + num2_right) \
-            - left_multi - right_multi) + right_multi
+            - left_multi - right_multi) + (right_multi)
 
-    return out
+    return int(out)
 
 if __name__ == '__main__':
     num1 = int(input("Insert the first n^2-digit number: "))
     num2 = int(input("Insert the second n^2-digit number: "))
     output = karatsuba_recursive(num1,num2)
-    print("The multiplication result is: ",output)
+    print("The multiplication result is: ", output)
