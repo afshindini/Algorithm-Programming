@@ -3,7 +3,7 @@
 
 def helpful_maths() -> str:
     """Return the math equation in non increasing order"""
-    eq = list(input("Enter the sum equation only containing 1/2/3/+: ").split("+"))
+    eq = input("Enter the sum equation only containing 1/2/3/+: ").split("+")
     eq.sort()
     return "+".join(eq)
 
