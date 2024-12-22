@@ -10,3 +10,4 @@ def buy_shovel() -> int:
 
 if __name__ == "__main__":
     print(buy_shovel())
+
